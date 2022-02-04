@@ -1,0 +1,75 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+%\usepackage{float}
+
+%\usepackage{pdfpages}
+
+\usepackage{fontspec}
+\setmainfont{EB Garamond}
+
+%\usepackage{graphicx}
+
+%\usepackage[section]{minted}
+%\usemintedstyle{xcode}
+
+\usepackage{hyperref}
+
+\title{Web Tech Assignment II\break CSE1 94}
+\author{Axel Geist (5315972), Severin Bratus (5483026)}
+\date{January 2022}
+
+\begin{document}
+
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+
+\section*{2 Client-side JavaScript}
+
+\subsection*{2.1 Plan of action}
+
+%\begin{enumerate}
+%\end{enumerate}
+The only interactive element of the game screen is the board, broadly speaking.
+At a finer level of detail, a player can move their pieces when it is their turn to move (a player will be notified of this through the prompt above the board).
+A player makes a move by first clicking on the tile, where a piece of his color stands, and then clicking on another tile (these tile may be highlighted for more usability), indicating where the chosen piece should move.
+If a player first selects a piece, and then clicks on a tile not available for movement, the selection is cancelled (at the same time, another piece can be selected).
+If a piece is captured, the counter of pieces lost / won is updated on both sides.
+Two tiles of the last move are highlighted, as are checks (and hence checkmates)
+
+On pawn promotion (after a move results in a pawn reaching the 8th rank), a pop-up window asks the user whether they want to replace the pawn with a knight, bishop, rook, or queen.
+
+\subsection*{2.2 Object design patterns}
+
+The assignment manual permits using additional JavaScript libraries to check for valid moves.
+We chose \href{https://www.npmjs.com/package/kokopu}{kokopu}, because it supports Chess960, and the Universal Chess Interface.
+To access these features of kokopu we use the \verb|kokopu.Position| class
+(\href{https://github.com/yo35/kokopu/blob/master/src/position.js}{source}),
+which represents a valid chess game state, i.e. the state of the 8x8 chessboard.
+Thus we do not implement the game state object and game board object ourselves.
+
+We do not need a chess piece class, because we can move pieces (and check if a move for validity) via the \verb|Position#IsMoveLegal| function
+(\href{https://kokopu.yo35.org/docs/Position.html#isMoveLegal(from, to) → \{boolean|function\}
+}{source}), 
+which returns \verb|false| in case the move is illegal, and a function which returns a \verb|MoveDescriptor|.
+That function is called without any arguments, except in the case of pawn promotion, when the chosen pawn replacement must be specified by the user.
+In kokopu, the internal representation of a chess piece type is simply a one-character string (e.g. \verb|'b'| for a bishop)
+
+Note that the \verb|Position| class is \href{https://github.com/yo35/kokopu/blob/master/src/position.js}{implemented} implemented with the prototype-based constructor design pattern, as all of its functions are assigned to \verb|Position.proto|.
+
+In \verb|Session.js| we do use an object for representing a game session, with a prototype-based constructor. This object is used to coordinate messages between the client instances.
+
+\section*{3.3 List of messages}
+
+\begin{itemize}
+    \item \verb|GAME_STARTED| from server to clients, contains the initial configuration of the chess board (\verb|schernaglCode|).
+    \item \verb|GAME_MOVE| from client-A to server or from server to client-B. Here client-A is the one who made the move (\verb|to|, \verb|from| coordinates).
+    \item \verb|PLAYER_TYPE| from server to client, set client color to black or white.
+    \item \verb|GAME_ABORTED| from server to client, notify that the other client has abandoned the session. This message may be sent even after the game is completed.
+    \item \verb|GAME_OVER| from client to server, includes game statistics (minutesPlayed, piecesCaptured). A client sends out this message immediately after having received the \verb|GAME_ABORTED| message. The message results in the session (and hence the two accompanying websocket connections) being deleted.
+\end{itemize}
+
+
+\end{document}
+
