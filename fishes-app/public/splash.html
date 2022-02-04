@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheets/splash.css">
+    <title>Fishes</title>
+</head>
+<body>
+  <main>
+    <section id="intro">
+      <div id="upper">
+        <div id="upper-left">
+            <img src="images/fishes-logo.png" class="logo">
+        </div>
+
+        <div id="upper-right">
+          <h1>Fishes:</h1>
+          <h2>Fischer random chess <br>in your browser.</h2>
+
+          <div class="buttons">
+            <form action="/play" method="get">
+                <button type="submit"><a>Play</a></button>
+            </form>
+
+            <form action="#rules">
+                <button type="submit"><a>Rules</a></button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div id="lower">
+        <div class="statBox">
+          <img src="images/pieces/wb.svg">
+          <span>Games <br>played:<br><br>12</span>
+        </div>
+
+        <div class="statBox">
+          <img src="images/pieces/wr.svg">
+          <span>Time <br>played:<br><br>1 h 2 min</span>
+        </div>
+
+        <div class="statBox">
+          <img src="images/pieces/wq.svg">
+          <span>Pieces <br>captured:<br><br>120</span>
+        </div>
+      </div>
+
+    </section>
+
+    <section id="rules">
+        <h1>Rules</h1>
+        <p>
+        Fischer random chess, also known as Chess960, is almost identical to chess, except for initial positions and the castling rule.
+        The initial positions of the non-pawn pieces are shuffled, although with some constraints:
+        </p>
+        <ul>
+            <li>
+            The bishops are placed on opposite-color squares.
+            </li>
+            <li>
+            The king is placed between the rooks.
+            </li>
+        </ul>
+
+        <h4>
+        Castling destinations:
+        </h4>
+        <ul>
+            <li>
+            After a-side castling, the king finishes on the c-file, the rook finishes on the d-file.
+            </li>
+            <li>
+            After h-side castling, the king finishes on the g-file, the rook finishes on the f-file.
+            </li>
+        </ul>
+
+        <h4>
+        Castling prerequisites:
+        </h4>
+        <ul>
+            <li>
+            The king and the castling rook must not have previously moved.
+            </li>
+            <li>
+            No square from the king's initial square to its final square may be under attack.
+            </li>
+            <li>
+            All squares from the king's initial and final squares (inclusively)
+            must be vacant from pieces other than the king and the rook, and likewise for the rook.
+            </li>
+        </ul>
+
+        <p>
+        To castle, try to capture one of your own rooks with your king.
+        </p>
+        <p>
+        This application does not support the threefold repetition rule, the fifty-move rule, and the pawn promotion choice. Pawns are always promoted to queens.
+        </p>
+        <form action="#intro">
+            <button type="submit"><a>Back</a></button>
+        </form>
+    </section>
+
+  </main>
+
+</body>
+</html>

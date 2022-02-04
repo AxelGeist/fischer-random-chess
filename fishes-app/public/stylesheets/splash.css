@@ -1,0 +1,142 @@
+@import "style.css";
+
+@keyframes spin {
+    from { transform: rotate(0deg);}
+    to { transform: rotate(360deg);}
+}
+
+body {
+  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 150%;
+  margin: 0;
+}
+
+h2 {
+  opacity: 77%;
+}
+
+#intro {
+  background-color: var(--main-blue);
+  color: white;
+  height: 100vh;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+/*   grid-template-rows: repeat(2, 1fr); */
+
+/*  display: flex; */
+/*  place-items: center; */
+/*  justify-content: center; */
+}
+
+#rules {
+  background-color: white;
+  color: black;
+  height: 100vh;
+  padding: 5% 50% 5% 5%;
+  margin: 0% 0% 5% 0%;
+  text-align: justify;
+  position: absolute;
+}
+
+#rules button {
+  color: white;
+  background-color: var(--main-blue);
+  margin-bottom: 10%;
+}
+
+.logo{
+  animation: spin linear 10s infinite;
+  width: inherit;
+  height: inherit;
+}
+
+#upper {
+/*  margin-top: 5%; */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 5% auto 5% auto;
+}
+
+#upper-left {
+  width: 300px;
+  height: 300px;
+  /*! object-fit: contain; */
+}
+
+#upper-right {
+  text-align: left;
+}
+
+button {
+  margin: 3% 10% 0% 0%;
+  background-color: white;
+  border: none;
+  color: black;
+  font-weight: bold;
+  font-size: large;
+  border-radius: 1em;
+  width: 5em;
+  height: 3em;
+  float: left;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(1.03);
+}
+
+button:active {
+  transform: scale(1.13);
+}
+
+a::before {
+  content: " ▶ ";
+}
+
+a::after {
+  content: " ◀ ";
+}
+
+a {
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+ul {
+  list-style: square;
+}
+
+#rules .logo {
+/*  animation: spin linear 10s infinite; */
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 10%;
+  right: 20%;
+}
+
+#lower {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+/*   width: 100%; */
+  margin: 3% 10% 0 21%;
+}
+
+.statBox {
+  display: flex;
+/*   grid-template-columns: repeat(2, 1fr); */
+}
+
+.statBox img {
+  max-height: 41%;
+/*   filter: scale(0.3); */
+/*   max-width: 100%; */
+}
+
+.statBox span {
+  margin: 0 0 0 5%;
+  font-weight: bold;
+}

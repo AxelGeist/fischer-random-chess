@@ -1,0 +1,100 @@
+@import "style.css";
+
+body {
+  display: grid;
+  place-items: center;
+  font-family: monospace;
+  font-size: 150%;
+  font-weight: bold;
+  margin: 0;
+  background-color: var(--main-blue);
+  
+  background-image: url(/images/pattern.jpg);
+  background-size: 45vmin;
+}
+
+#board {
+  display: grid;
+  grid-template-rows: repeat(10, 1fr);
+  grid-template-columns: repeat(10, 1fr);
+  aspect-ratio: 1;
+  width: 88vmin;
+/*   margin: auto 0; */
+}
+
+.light {
+  background-color: white;
+}
+
+.dark {
+  background-color: var(--main-blue);
+}
+
+.dark:hover, .light:hover {
+  filter: brightness(98%);
+}
+
+.light:active img, .dark:active img {
+  transform: scale(1.001);
+}
+
+.square {
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  font-family: monospace;
+}
+
+.light.hl-green {
+  background-color: palegreen; 
+}
+
+.dark.hl-green {
+  background-color: mediumaquamarine;
+}
+
+.hl-green:hover {
+  cursor: grab;
+}
+
+.hl-green:active {
+  cursor: grabbing;
+}
+
+.light.hl-select, .light.hl-select.hl-check {
+  background-color: mediumseagreen;
+}
+
+.dark.hl-select, .dark.hl-select.hl-check {
+  background-color: seagreen;
+}
+
+.light.hl-check, .dark.hl-check {
+  background-color: salmon;
+}
+
+img {
+  max-height: 100%;
+  max-width: 100%;
+  cursor: pointer;
+}
+
+main {
+  background-color: whitesmoke;
+  height: 100%;
+/*   margin: 0 auto; */
+}
+
+#prompt {
+  margin: 5% 10%
+}
+
+a {
+  color: var(--main-blue);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#timer, #piecesWon, #piecesLost {
+  margin: 5% 10%
+}

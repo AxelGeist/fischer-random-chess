@@ -1,0 +1,20 @@
+:root {
+  --main-blue: rgba(73, 150, 190, 1);
+}
+
+@media (max-width: 799px), (max-height: 799px) {
+  body::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    background-color: var(--main-blue);
+    padding: 20px;
+    content: "Your window resolution is too small to play this game. Either enlarge the browser window, or zoom out, or disable the CSS @media query, or buy a larger monitor.";
+    color: white;
+    z-index: 100;
+  }
+}
