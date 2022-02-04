@@ -1,12 +1,12 @@
 # Chess960
 
-To launch the server:
+How to launch the server:
 ```sh
 cd fishes-app
 npm install
 npm start
 ```
 
-The default port number is 3333.
+The port number is 3333.
 
-Enjoy.
+Have fun!
