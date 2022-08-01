@@ -91,13 +91,13 @@ button:active {
   transform: scale(1.13);
 }
 
-a::before {
+/* a::before {
   content: " ▶ ";
 }
 
 a::after {
   content: " ◀ ";
-}
+} */
 
 a {
   white-space: nowrap;
