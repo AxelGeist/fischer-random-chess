@@ -20,7 +20,7 @@ npm start
 
 The port number is 3333.
 ```sh
-httos://localhost:3333
+https://localhost:3333
 ```
 
 Have fun!
